@@ -1,0 +1,15 @@
+{
+  "name": "amgosh",
+  "version": "1.0.0",
+  "main": "main.js",
+  "author": "Amitay Kaufman",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "openai": "^4.0.1",
+    "simple-git": "^3.19.1"
+  }
+}
