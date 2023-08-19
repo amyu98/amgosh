@@ -63,7 +63,8 @@ async function getNewFilesContent(git, dirName) {
   const newFiles = await getNewFiles(git);
   const newFilesAsList = newFiles
     .split("\n")
-    .filter((newFile) => newFile.trim().length > 0);
+    .filter((newFile) => newFile.trim().length > 0)
+    .filter((newFile) => shouldIncludeFile(newFile));
 
   const newFilesContent = [];
   for (const new_file of newFilesAsList) {
@@ -116,3 +117,9 @@ const countStringTokens = (string) => {
 const getDiffCommand = (contextSize) => {
   ["-U" + contextSize];
 };
+
+const shouldIncludeFile = (file) => {
+  const fileExtension = file.split(".").pop();
+  const excludedExtensions = ["png", "jpg", "jpeg", "gif", "ico", "svg", "lock", "webp"];
+  return !excludedExtensions.includes(fileExtension);
+}
